@@ -1,0 +1,13 @@
+# Compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environment configuration (contains sensitive tokens)
+.env
+
+# Editor settings (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+*.swp
+*.swo

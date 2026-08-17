@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  crafty_controller-wake_proxy:
+    build: .
+    container_name: crafty_controller-wake_proxy
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      # El puerto expuesto corresponde al configurado en la variable LISTEN_PORT (por defecto 25600)
+      - "${LISTEN_PORT:-25600}:${LISTEN_PORT:-25600}"
+    env_file:
+      - .env
+    volumes:
+      # Mapea el script local al contenedor de forma relativa
+      - ./src/proxy.py:/app/proxy.py
+      # Mapea el archivo .env para aplicar cambios en caliente reiniciando el contenedor
+      - .env:/app/.env
